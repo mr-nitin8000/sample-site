@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Edukids — Better Future For Your Kids</title>
+<meta name="description" content="Edukids — landing page for kids education programs, resources and instructors." />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink: '#1b1436',
+        purple: {
+          DEFAULT: '#5b3df0',
+          dark: '#2a1a5e',
+        },
+        cream: '#f4f2fb',
+        orange: '#f5714a',
+        yellow: '#f7c948',
+      },
+      fontFamily: {
+        display: ['Poppins', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+      },
+      keyframes: {
+        float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } },
+        floatSlow: { '0%,100%': { transform: 'translateY(0) rotate(0deg)' }, '50%': { transform: 'translateY(-10px) rotate(6deg)' } },
+        spinSlow: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+        fadeUp: { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+        wiggle: { '0%,100%': { transform: 'rotate(-3deg)' }, '50%': { transform: 'rotate(3deg)' } },
+      },
+      animation: {
+        float: 'float 4s ease-in-out infinite',
+        floatSlow: 'floatSlow 6s ease-in-out infinite',
+        spinSlow: 'spinSlow 18s linear infinite',
+        fadeUp: 'fadeUp 0.8s ease-out forwards',
+        wiggle: 'wiggle 2.5s ease-in-out infinite',
+      },
+    },
+  },
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  h1,h2,h3,.font-display { font-family: 'Poppins', sans-serif; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; }
+  .reveal.in-view { animation: fadeUp 0.8s ease-out forwards; }
+  .doodle { position: absolute; opacity: 0.5; pointer-events: none; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #f4f2fb; }
+  ::-webkit-scrollbar-thumb { background: #5b3df0; border-radius: 10px; }
+  .card-hover { transition: transform .35s ease, box-shadow .35s ease; }
+  .card-hover:hover { transform: translateY(-10px) rotate(-1deg); box-shadow: 0 20px 40px -12px rgba(91,61,240,0.35); }
+</style>
+</head>
+<body class="bg-cream text-ink antialiased overflow-x-hidden">
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-50 bg-cream/80 backdrop-blur-md border-b border-purple/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+    <a href="#home" class="font-display text-2xl font-bold flex items-center gap-1">
+      Edukids<span class="text-orange">.</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-ink/70">
+      <a href="#about" class="hover:text-purple transition-colors">About Us</a>
+      <div class="relative group">
+        <button class="flex items-center gap-1 hover:text-purple transition-colors">Programs
+          <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="absolute left-0 top-full mt-2 w-48 bg-white rounded-xl shadow-xl border border-purple/10 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-1 group-hover:translate-y-0">
+          <a href="#programs" class="block px-4 py-2 rounded-lg hover:bg-cream text-sm">Creative Thinking</a>
+          <a href="#programs" class="block px-4 py-2 rounded-lg hover:bg-cream text-sm">Career Planning</a>
+          <a href="#programs" class="block px-4 py-2 rounded-lg hover:bg-cream text-sm">Public Speaking</a>
+        </div>
+      </div>
+      <a href="#pricing" class="hover:text-purple transition-colors">Pricing</a>
+      <a href="#instructor" class="hover:text-purple transition-colors">Instructor</a>
+      <a href="#resources" class="hover:text-purple transition-colors">Blog</a>
+      <a href="#footer" class="hover:text-purple transition-colors">Youtube</a>
+    </nav>
+    <a href="#get-started" class="hidden sm:inline-flex items-center gap-2 bg-purple text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-purple-dark transition-all hover:scale-105 shadow-lg shadow-purple/30">
+      Get Started
+      <span class="w-6 h-6 rounded-full bg-orange flex items-center justify-center text-xs">→</span>
+    </a>
+    <button id="menuBtn" class="lg:hidden text-ink" aria-label="Toggle menu">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-purple/10 px-6 py-4 space-y-3 text-sm font-medium">
+    <a href="#about" class="block">About Us</a>
+    <a href="#programs" class="block">Programs</a>
+    <a href="#pricing" class="block">Pricing</a>
+    <a href="#instructor" class="block">Instructor</a>
+    <a href="#resources" class="block">Blog</a>
+    <a href="#get-started" class="block text-purple font-semibold">Get Started</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="relative pt-16 pb-24 px-6 lg:px-10 overflow-hidden">
+  <svg class="doodle top-24 left-8 w-10 h-10 text-purple/40 animate-wiggle" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.5" d="M12 2l2 4 4 .6-3 3 .7 4L12 12l-3.7 1.6.7-4-3-3L10 6z"/></svg>
+  <svg class="doodle top-40 right-10 w-8 h-8 text-orange/50 animate-float" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9" stroke-width="1.5"/></svg>
+  <svg class="doodle bottom-10 left-1/3 w-9 h-9 text-purple/30 animate-floatSlow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="4" stroke-width="1.5"/></svg>
+
+  <div class="max-w-7xl mx-auto text-center relative">
+    <h1 class="reveal font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight" style="animation-delay:.05s">
+      Better Future For <span class="text-purple">Your Kids</span>
+    </h1>
+
+    <div class="reveal flex justify-center mt-8" style="animation-delay:.15s">
+      <div class="inline-flex items-center gap-4 bg-white rounded-full shadow-md pl-6 pr-2 py-2">
+        <span class="text-sm font-medium text-ink/70">Let the child be the director, and the actor in his own play</span>
+        <a href="#get-started" class="bg-purple text-white text-sm font-semibold px-6 py-2.5 rounded-full flex items-center gap-2 hover:bg-purple-dark transition-all hover:scale-105 whitespace-nowrap">
+          Get Started
+          <span class="w-5 h-5 rounded-full bg-orange flex items-center justify-center text-[10px]">→</span>
+        </a>
+      </div>
+    </div>
+
+    <p class="reveal max-w-md mx-auto mt-6 text-ink/60 text-sm" style="animation-delay:.25s">
+      We just don't give our students only lecture but real life experiment, workshops and filed experience throughout the journey !
+    </p>
+
+    <div class="relative mt-12 sm:mt-16 flex flex-wrap items-end justify-center gap-4 sm:gap-6 lg:gap-16">
+      <div class="reveal relative order-1" style="animation-delay:.3s">
+        <img src="https://images.unsplash.com/photo-1607453998774-d533f65dac99?q=80&w=400&auto=format&fit=crop" alt="Student with books" class="w-20 h-20 sm:w-40 sm:h-40 lg:w-52 lg:h-52 rounded-full object-cover ring-4 sm:ring-8 ring-orange/20 animate-float" />
+      </div>
+
+      <div class="reveal order-3 sm:order-2 w-full sm:w-auto bg-purple-dark text-white rounded-3xl px-6 sm:px-10 py-6 sm:py-10 max-w-sm sm:mx-0 mx-auto shadow-2xl shadow-purple/30" style="animation-delay:.2s">
+        <div class="grid grid-cols-2 gap-6 sm:gap-8">
+          <div class="text-left">
+            <span class="text-2xl sm:text-3xl font-bold font-display">7.5k+</span>
+            <p class="text-xs text-white/60 mt-1">Total active students taking gifted courses</p>
+          </div>
+          <div class="text-left">
+            <span class="text-2xl sm:text-3xl font-bold font-display">50+</span>
+            <p class="text-xs text-white/60 mt-1">Available field programs and increasing</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal relative order-2 sm:order-3" style="animation-delay:.35s">
+        <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=400&auto=format&fit=crop" alt="Student with apple" class="w-24 h-24 sm:w-44 sm:h-44 lg:w-56 lg:h-56 rounded-full object-cover ring-4 sm:ring-8 ring-yellow/30 animate-floatSlow" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS BAR -->
+<section id="programs" class="px-6 lg:px-10 -mt-4">
+  <div class="reveal max-w-5xl mx-auto bg-purple-dark rounded-3xl px-8 lg:px-12 py-8 flex flex-col lg:flex-row items-center justify-between gap-8 text-white shadow-2xl shadow-purple/20">
+    <div class="text-center lg:text-left">
+      <h3 class="font-display text-xl font-semibold">Programs</h3>
+      <p class="text-white/60 text-sm mt-1 max-w-[180px]">Our programs are designed to develop your children.</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-4 lg:gap-8">
+      <div class="text-center group cursor-pointer">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-white/10 flex items-center justify-center text-2xl group-hover:bg-orange group-hover:scale-110 transition-all">💡</div>
+        <p class="text-sm mt-2 font-medium">Creative Thinking</p>
+        <span class="text-xs text-white/50">Learn more →</span>
+      </div>
+      <div class="text-center group cursor-pointer -mt-4 bg-white/10 rounded-2xl p-4 ring-2 ring-yellow/60">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-yellow flex items-center justify-center text-2xl text-purple-dark group-hover:scale-110 transition-all">🎒</div>
+        <p class="text-sm mt-2 font-medium">Career Planning</p>
+        <span class="text-xs text-white/50">Learn more →</span>
+      </div>
+      <div class="text-center group cursor-pointer">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-white/10 flex items-center justify-center text-2xl group-hover:bg-orange group-hover:scale-110 transition-all">📣</div>
+        <p class="text-sm mt-2 font-medium">Public Speaking</p>
+        <span class="text-xs text-white/50">Learn more →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources" class="px-6 lg:px-10 py-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold">Our Resources</h2>
+      <p class="text-ink/50 mt-2">We develop their confidence to make them sharper</p>
+    </div>
+    <div class="reveal flex justify-end gap-3 mb-6 max-w-5xl mx-auto">
+      <button onclick="scrollCards(-1)" class="w-9 h-9 rounded-full bg-orange text-white flex items-center justify-center hover:bg-purple transition-colors">‹</button>
+      <button onclick="scrollCards(1)" class="w-9 h-9 rounded-full bg-orange text-white flex items-center justify-center hover:bg-purple transition-colors">›</button>
+    </div>
+    <div id="cardTrack" class="flex gap-6 overflow-x-auto max-w-5xl mx-auto pb-4 snap-x scroll-smooth [scrollbar-width:none]">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=300&auto=format&fit=crop" class="card-hover snap-start w-48 h-64 object-cover rounded-2xl shadow-lg flex-shrink-0" alt="Book cover 1" />
+      <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=300&auto=format&fit=crop" class="card-hover snap-start w-48 h-64 object-cover rounded-2xl shadow-lg flex-shrink-0" alt="Book cover 2" />
+      <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=300&auto=format&fit=crop" class="card-hover snap-start w-48 h-64 object-cover rounded-2xl shadow-lg flex-shrink-0" alt="Book cover 3" />
+      <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=300&auto=format&fit=crop" class="card-hover snap-start w-48 h-64 object-cover rounded-2xl shadow-lg flex-shrink-0" alt="Book cover 4" />
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="px-6 lg:px-10 py-16">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-2 items-center gap-12">
+    <div class="reveal">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold leading-snug">Traditional In-person classroom encouraged students to</h2>
+      <ul class="mt-8 space-y-4">
+        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-orange/15 text-orange flex items-center justify-center text-xs">✓</span><span class="text-ink/70">Focus for long periods of time</span></li>
+        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-orange/15 text-orange flex items-center justify-center text-xs">✓</span><span class="text-ink/70">Engage with their peers</span></li>
+        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-orange/15 text-orange flex items-center justify-center text-xs">✓</span><span class="text-ink/70">Understanding of complicated concepts</span></li>
+      </ul>
+    </div>
+    <div class="reveal relative flex justify-center" style="animation-delay:.15s">
+      <div class="absolute w-72 h-72 bg-purple/10 rounded-[45%_55%_60%_40%/50%_45%_55%_50%] animate-spinSlow"></div>
+      <img src="https://images.unsplash.com/photo-1571210862729-78a52d3779a2?q=80&w=400&auto=format&fit=crop" class="relative w-64 h-64 object-cover rounded-full animate-float ring-4 ring-white shadow-xl" alt="Kid with skateboard" />
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ BANNER -->
+<section class="px-6 lg:px-10 py-16">
+  <div class="reveal max-w-6xl mx-auto grid sm:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl">
+    <div class="relative bg-orange/90 p-4 min-h-[260px]">
+      <img src="https://images.unsplash.com/photo-1476234251651-f353703a034d?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover rounded-2xl" alt="Kids reading together" />
+    </div>
+    <div class="bg-purple-dark text-white p-10 flex flex-col justify-center">
+      <h3 class="font-display text-2xl lg:text-3xl font-bold">Children will be tested with online quiz games</h3>
+      <p class="text-white/60 text-sm mt-4">Children will be tested with their knowledge skills via trivia games for kids activities like never before.</p>
+      <a href="#get-started" class="mt-6 inline-flex w-fit items-center gap-2 bg-yellow text-purple-dark font-semibold px-6 py-3 rounded-full hover:scale-105 transition-transform">Try a Quiz</a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR / SUPERSTARS -->
+<section id="instructor" class="px-6 lg:px-10 py-16">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal flex items-center justify-between mb-10">
+      <h2 class="font-display text-2xl lg:text-3xl font-bold">Our October's <br class="sm:hidden"/>Superstar</h2>
+      <a href="#" class="bg-purple text-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-purple-dark transition-all hover:scale-105 shrink-0">See All 🏆</a>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-8">
+      <div class="reveal card-hover flex items-center gap-4 bg-white rounded-2xl p-4 shadow">
+        <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=150&auto=format&fit=crop" class="w-16 h-16 rounded-full object-cover" alt="Jaydn Niles" />
+        <div><p class="font-semibold">Jaydn Niles</p><p class="text-xs text-ink/50">Age 5 years</p><p class="text-xs text-ink/50">From Ethiopia</p></div>
+      </div>
+      <div class="reveal card-hover flex items-center gap-4 bg-white rounded-2xl p-4 shadow" style="animation-delay:.1s">
+        <img src="https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?q=80&w=150&auto=format&fit=crop" class="w-16 h-16 rounded-full object-cover" alt="Lisa Ava" />
+        <div><p class="font-semibold">Lisa Ava</p><p class="text-xs text-ink/50">Age 6 years</p><p class="text-xs text-ink/50">From Columbia</p></div>
+      </div>
+      <div class="reveal card-hover flex items-center gap-4 bg-white rounded-2xl p-4 shadow" style="animation-delay:.2s">
+        <img src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?q=80&w=150&auto=format&fit=crop" class="w-16 h-16 rounded-full object-cover" alt="Sophia Mia" />
+        <div><p class="font-semibold">Sophia Mia</p><p class="text-xs text-ink/50">Age 8 years</p><p class="text-xs text-ink/50">From Ireland</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section id="pricing" class="px-6 lg:px-10 py-16">
+  <div class="max-w-6xl mx-auto grid sm:grid-cols-2 gap-6">
+    <div class="reveal bg-white rounded-3xl p-8 shadow">
+      <h3 class="font-display text-lg font-bold">We integrate with your favorite software platform</h3>
+      <a href="#" class="text-purple text-sm font-semibold mt-2 inline-block">Explore Supports →</a>
+      <div class="flex gap-4 mt-6 text-2xl">
+        <span class="w-12 h-12 rounded-full bg-cream flex items-center justify-center hover:scale-110 transition-transform">📘</span>
+        <span class="w-12 h-12 rounded-full bg-cream flex items-center justify-center hover:scale-110 transition-transform">💬</span>
+        <span class="w-12 h-12 rounded-full bg-cream flex items-center justify-center hover:scale-110 transition-transform">🔍</span>
+        <span class="w-12 h-12 rounded-full bg-cream flex items-center justify-center hover:scale-110 transition-transform">▶️</span>
+      </div>
+    </div>
+    <div class="reveal bg-white rounded-3xl p-8 shadow" style="animation-delay:.1s">
+      <h3 class="font-display text-lg font-bold">How we become world largest ed-tech company so far</h3>
+      <a href="#" class="text-purple text-sm font-semibold mt-2 inline-block">Read story →</a>
+      <div class="flex gap-4 mt-6 text-2xl">
+        <span class="w-12 h-12 rounded-full bg-cream flex items-center justify-center hover:scale-110 transition-transform">🅱️</span>
+        <span class="w-12 h-12 rounded-full bg-cream flex items-center justify-center hover:scale-110 transition-transform">☁️</span>
+        <span class="w-12 h-12 rounded-full bg-cream flex items-center justify-center hover:scale-110 transition-transform">🌀</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="get-started" class="px-6 lg:px-10 py-16">
+  <div class="reveal max-w-6xl mx-auto bg-yellow rounded-3xl grid sm:grid-cols-2 overflow-hidden shadow-2xl">
+    <div class="p-10 flex flex-col justify-center">
+      <h3 class="font-display text-3xl font-bold text-purple-dark">Better Future for Your Kids</h3>
+      <p class="text-ink/70 mt-2">Get our free E-book</p>
+      <form onsubmit="event.preventDefault(); this.reset(); alert('Thanks! Check your inbox.');" class="mt-6 flex bg-white rounded-full overflow-hidden max-w-sm shadow-lg">
+        <input type="email" required placeholder="Your E-mail" class="flex-1 px-5 py-3 text-sm outline-none" />
+        <button type="submit" class="bg-purple text-white px-5 flex items-center justify-center hover:bg-purple-dark transition-colors">→</button>
+      </form>
+    </div>
+    <div class="hidden sm:block">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover" alt="Kids in classroom" />
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer" class="bg-purple-dark text-white px-6 lg:px-10 pt-16 pb-8 mt-8 relative overflow-hidden">
+  <svg class="doodle top-8 right-16 w-8 h-8 text-white/20 animate-wiggle" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9" stroke-width="1.5"/></svg>
+  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
+    <div class="lg:col-span-1">
+      <a href="#home" class="font-display text-2xl font-bold">Edukids<span class="text-orange">.</span></a>
+      <p class="text-white/50 text-sm mt-3">Let the child be the director in his own play.</p>
+      <p class="text-white/50 text-sm mt-4">supports@edukids.com</p>
+      <p class="text-white/50 text-sm">(270) 555-0117</p>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4">Learners</h4>
+      <ul class="space-y-2 text-sm text-white/60">
+        <li><a href="#" class="hover:text-white transition-colors">Educators</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Professionals</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Faculty</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4">My Account</h4>
+      <ul class="space-y-2 text-sm text-white/60">
+        <li><a href="#" class="hover:text-white transition-colors">Awards</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Profile</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Renew Subscription</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Get Gift</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4">Company</h4>
+      <ul class="space-y-2 text-sm text-white/60">
+        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Our History</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Culture & Trade</a></li>
+        <li><a href="#resources" class="hover:text-white transition-colors">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4">Need Help?</h4>
+      <ul class="space-y-2 text-sm text-white/60">
+        <li><a href="#" class="hover:text-white transition-colors">FAQ's</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Help</a></li>
+        <li><a href="#" class="hover:text-white transition-colors">Payment Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+    <p>Designed by Edukids Team</p>
+    <p>All rights reserved to Edukids 2026 Ltd.</p>
+    <div class="flex gap-4">
+      <a href="#" class="hover:text-white transition-colors" aria-label="Instagram">IG</a>
+      <a href="#" class="hover:text-white transition-colors" aria-label="Twitter">TW</a>
+      <a href="#" class="hover:text-white transition-colors" aria-label="Facebook">FB</a>
+      <a href="#" class="hover:text-white transition-colors" aria-label="YouTube">YT</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+
+  function scrollCards(dir) {
+    document.getElementById('cardTrack').scrollBy({ left: dir * 220, behavior: 'smooth' });
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
